@@ -7,9 +7,14 @@ function generateEntry( title, path, isReadme, isFAQ ) {
   if (isReadme && isFAQ)
     return `## ${title}\n`
 
-  const depth = path.match(/\//g).length + (!isReadme && !isFAQ)
+  match = path.match(/\//g)
+  depth = 0
 
-  if (depth == 1) {
+  if (match) {
+    depth = match.length + (!isReadme && !isFAQ)
+  }
+
+  if (depth <= 1) {
     return `\n\n- [${title}](${path})\n`
   }
 
