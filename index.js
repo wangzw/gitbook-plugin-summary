@@ -9,6 +9,10 @@ function generateEntry( title, path, isReadme, isFAQ ) {
 
   const depth = path.match(/\//g).length + (!isReadme && !isFAQ)
 
+  if (depth == 1) {
+    return `\n\n- [${title}](${path})\n`
+  }
+
   return `${Array(depth).join('    ')}- [${title}](${path})\n`
 }
 
