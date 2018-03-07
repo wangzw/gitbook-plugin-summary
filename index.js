@@ -31,7 +31,7 @@ module.exports = {
         `*/**/*.md`,
         {
           cwd: root,
-          ignore: ['node_modules/**'],
+          ignore: ['node_modules/**', `**/${summaryFilename}`],
           nosort: true
         },
         ( err, files ) => {
