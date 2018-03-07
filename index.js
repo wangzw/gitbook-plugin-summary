@@ -14,7 +14,7 @@ function generateEntry( title, path, isReadme, isFAQ ) {
     depth = match.length + (!isReadme && !isFAQ)
   }
 
-  if (depth <= 1) {
+  if (depth <= 1 && isReadme) {
     return `\n\n- [${title}](${path})\n`
   }
 
@@ -37,10 +37,10 @@ module.exports = {
       const isReadme = path => path.includes(readmeFilename)
 
       glob(
-        `*/**/*.md`,
+        `**/*.md`,
         {
           cwd: root,
-          ignore: ['node_modules/**', `**/${summaryFilename}`],
+          ignore: ['**/node_modules/**', `**/${summaryFilename}`],
           nosort: true
         },
         ( err, files ) => {
