@@ -45,10 +45,21 @@ module.exports = {
         },
         ( err, files ) => {
           files.sort((a, b) => {
-            if (path.dirname(b).includes(path.dirname(a)) && isReadme(a))
+            if (a == b) {
+              return 0
+            }
+            if (isReadme(a) && path.dirname(a) == '.') {
               return -1
-            if (path.dirname(a).includes(path.dirname(b)) && isReadme(b))
+            }
+            if (path.dirname(b).includes(path.dirname(a)) && isReadme(a)) {
+              return -1
+            }
+            if (isReadme(b) && path.dirname(b) == '.') {
               return 1
+            }
+            if (path.dirname(a).includes(path.dirname(b)) && isReadme(b)){
+              return 1
+            }
             return a < b ? -1 : a > b ? 1 : 0
           })
 
