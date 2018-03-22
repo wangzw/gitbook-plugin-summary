@@ -51,7 +51,6 @@ module.exports = {
           if ((file.match(pattern) && !ignorelist.includes(file)) || (isDir && !ignorelist.includes(file))) {
             if (index == 0) {
               adding = prefix
-              summaryContent += '\n\n'
             } else {
               adding = prefix ? prefix + '.' + index : '' + index
             }
@@ -60,6 +59,10 @@ module.exports = {
               walkSync(path.join(dir, file), pattern, ignorelist, level + 1, adding)
             } else {
               summaryContent += generate(parser, root, adding, path.join(dir, file), index == 0 ? level - 1 : level)
+            }
+
+            if (level == 1) {
+              summaryContent += '\n\n'
             }
 
             index = index + 1
