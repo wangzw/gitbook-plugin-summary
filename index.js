@@ -25,12 +25,11 @@ module.exports = {
     init: function () {
       const parser = new Parser(),
         root = this.resolve(''),
-        bookTitle = this.config.get('title'),
         readmeFilename = this.config.get('structure.readme'),
         summaryFilename = this.config.get('structure.summary')
 
       let ret = Promise.resolve(),
-        summaryContent = (bookTitle ? `# ${bookTitle}` : '')
+        summaryContent = ''
 
       const isReadme = path => path.includes(readmeFilename)
 
