@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-summary2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gitbook plugin to auto-generate SUMMARY.md",
   "main": "index.js",
   "scripts": {},
@@ -27,6 +27,6 @@
     "gitbook": ">=3.2.3"
   },
   "dependencies": {
-    "markdown-parser2": "0.0.8"
+    "markdown-parser2": "0.0.9"
   }
 }
